@@ -1,2 +1,2 @@
 # TrabalhoPIF
-Trabalho da matéria de Programação Imperativa e Funcional focado em um game.
+Trabalho da matéria de Programação Imperativa e Funcional focado no desenvolvimento de um game.
