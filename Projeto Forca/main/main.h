@@ -1,0 +1,2 @@
+void alocanome();
+int nomevalido();

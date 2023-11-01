@@ -2,8 +2,13 @@
 
 typedef struct{
     int dif;
-    
+    char personagem[5][3];
 }partida;
+
+typedef struct{
+    char* nome;
+    float pontos;
+}pontuacao;
 
 void chuta(int* c, char a[26]);
 void jachutou(int* achou,int i, int c, char p[TAMANHO_PALAVRA], char a[26]);
