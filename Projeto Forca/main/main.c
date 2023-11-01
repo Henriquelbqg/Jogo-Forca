@@ -7,6 +7,8 @@
 #include "cli-lib-main/screen.c"
 #include "cli-lib-main/timer.c"
 
+char palavrasecreta[TAMANHO_PALAVRA];
+
 int main(void){
     
 }
