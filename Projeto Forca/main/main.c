@@ -19,10 +19,7 @@ int main(void){
 
     escolhepalavra(palavrasecreta);
 
-    do{
-        alocanome();
-        
-    }while(!nomevalido());
+    inserenome();
 }
 
 void alocanome(){
@@ -52,4 +49,10 @@ int nomevalido(){
         printf("Bem-vindo, %s!\n", jogo_pontuacao.nome);
         return 1;
     }
+}
+
+void inserenome(){
+    do{
+        alocanome();
+    }while(!nomevalido());
 }
