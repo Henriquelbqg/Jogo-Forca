@@ -20,6 +20,8 @@ int main(void){
     escolhepalavra(palavrasecreta);
 
     inserenome();
+
+    inseredif();
 }
 
 void alocanome(){
@@ -55,4 +57,54 @@ void inserenome(){
     do{
         alocanome();
     }while(!nomevalido());
+}
+
+void entradadifvalida(){
+    int buffer;
+
+    printf("Escolha a dificuldade: \n");
+    printf("1 - Facil\n");
+    printf("2 - Media\n");
+    printf("3 - Dificil\n");
+    printf("- ");
+    buffer = scanf("%d", &jogo.dif);
+
+    while(buffer != 1){
+        while(getchar() != '\n'){
+        //Nao precisa de nada aqui no meio, o que importa eh que rodou
+        }
+        printf("\nEntrada invalida, por favor digite uma das opcoes - ");
+        buffer = scanf("%d", &jogo.dif);
+    }
+}
+
+int difvalida(){
+    bool dif_valida = true;
+    switch(jogo.dif){
+        case 1:
+        printf("Facil, ta so se aquecendo ne?\n");
+        break;
+        case 2:
+        printf("Medio, o famoso tradicional!\n");
+        break;
+        case 3:
+        printf("Dificil, entao voce gosta de desafio!\n");
+        break;
+        default:
+        printf("Por favor, insira uma das opcoes de 1 a 3.\n");
+        dif_valida = false;
+        break;
+    }
+    if(!dif_valida){
+        return 0;
+    }else{
+        return 1;
+    }
+}
+
+void inseredif(){
+    do{
+        entradadifvalida();
+        
+    }while(!difvalida());
 }
