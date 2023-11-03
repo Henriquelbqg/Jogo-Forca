@@ -22,6 +22,10 @@ int main(void){
     inserenome();
 
     inseredif();
+
+    /*Funcao para o usuario personalizar o boneco a ser enforcado*/
+
+    
 }
 
 void alocanome(){
