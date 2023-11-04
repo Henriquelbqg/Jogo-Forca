@@ -73,10 +73,18 @@ void imprimepalavra(char p[TAMANHO_PALAVRA], int c, char a[26]){
 
 void chuta(int* c, char a[26]){
     char chute;
+    printf("- ");
     scanf(" %c", &chute);
 
-    a[(*c)] = chute;
-    (*c)++;
+    for(int i=0; i<strlen(a); i++){
+        if(chute == a[i]){
+            printf("\nVoce ja chutou essa letra, insira uma nova!");
+            chuta(&chutesdados, chutes);
+        }else{
+            a[(*c)] = chute;
+            (*c)++;
+        }
+    }
 }
 
 void jachutou(int* achou,int i, int c, char p[TAMANHO_PALAVRA], char a[26]){

@@ -10,6 +10,8 @@
 #include "cli-lib-main/timer.c"
 
 char palavrasecreta[TAMANHO_PALAVRA];
+int chutesdados;
+char chutes[26];
 partida jogo;
 pontuacao jogo_pontuacao;
 
@@ -25,7 +27,25 @@ int main(void){
 
     /*Funcao para o usuario personalizar o boneco a ser enforcado*/
 
-    
+    do{
+        /*Funcao para o printar a forca*/
+
+        /*Funcao para printar o timer para cada chute*/
+
+        tentativas();
+
+        printf("\nInsira o seu chute: ");
+        chuta(&chutesdados, chutes);
+
+        /*Funcao para parar o timer assim que o usuario chutar*/
+
+        pontos();
+        
+    }while(!acertou(palavrasecreta, chutesdados, chutes) && !enforcou());
+
+    pontostotais();
+
+    free(palavrasecreta);
 }
 
 void alocanome(){
@@ -111,4 +131,28 @@ void inseredif(){
         entradadifvalida();
         
     }while(!difvalida());
+}
+
+int enforcou(){
+    return chuteserrados(chutesdados, palavrasecreta, chutes) >= 6;
+}
+
+void pontos(){
+    float timer; //armazenem aqui o tempo do respectivo chute em segundos
+
+    jogo_pontuacao.pontos = jogo_pontuacao.pontos - timer;
+}
+
+void tentativas(){
+    printf("Chutes dados:");
+
+    for(int i=0; i<strlen(chutes); i++){
+        printf(" %c", chutes[i]);
+    }
+}
+
+void pontostotais(){
+    int erros = chuteserrados(chutesdados, palavrasecreta, chutes);
+
+    /*Em desenvolvimento...*/
 }
