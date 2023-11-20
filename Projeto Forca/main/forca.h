@@ -8,12 +8,12 @@ typedef struct{
 typedef struct{
     char* nome;
     int erros;
-    float pontos = 200.0;
+    float pontos;
 }pontuacao;
 
 void chuta(int* c, char a[26]);
 void jachutou(int* achou,int i, int c, char p[TAMANHO_PALAVRA], char a[26]);
 void imprimepalavra(char p[TAMANHO_PALAVRA], int c, char a[26]);
-void escolhepalavra(char p[TAMANHO_PALAVRA]);
+void escolhepalavra(char p[TAMANHO_PALAVRA], partida* jogo);
 int acertou(char p[TAMANHO_PALAVRA], int c, char a[26]);
 int chuteserrados(int c, char p[TAMANHO_PALAVRA], char a[26]);

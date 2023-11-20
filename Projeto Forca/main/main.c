@@ -19,11 +19,11 @@ int main(void){
 
     /*funcao para printar na tela o comeco do jogo, apertar alguma tecla para comecar*/
 
-    escolhepalavra(palavrasecreta);
-
     inserenome();
 
     inseredif();
+
+    escolhepalavra(palavrasecreta, &jogo);
 
     /*Funcao para o usuario personalizar o boneco a ser enforcado*/
 
