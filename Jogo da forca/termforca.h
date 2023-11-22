@@ -8,7 +8,6 @@ void limpa();
 int chuteerrado(int i);
 
 void pontostotais();
-void pontos();
 
 void inseredif();
 int difvalida();

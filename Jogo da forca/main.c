@@ -35,9 +35,12 @@ int main(void){
 
     desenhaforca();
 
+    pontostotais();
+
     if(acertou(palavrasecreta, chutesdados, chutes)){
         imprimepalavra(palavrasecreta, chutesdados, chutes);
         printf("\n\nPARABENS!!! VOCE GANHOU!\n\n\n");
+        printf("Seus pontos: %d\n\n", jogo_pontuacao.pontos);
     }else{
         printf("\nVoce perdeu, boa sorte na proxima vez!\n");
         printf("A palavra era **%s**\n\n",palavrasecreta);
@@ -162,18 +165,21 @@ void inseredif(){
     }while(!difvalida());
 }
 
-void pontos(){
-    float timer;
-
-    jogo_pontuacao.pontos = jogo_pontuacao.pontos - timer;
-
-    /*Em desenvolvimento...*/
-}
-
 void pontostotais(){
     int erros = chuteserrados(chutesdados, palavrasecreta, chutes);
+    int sorre = 6 - erros;
+    int pontos = 200;
 
-    /*Em desenvolvimento...*/
+    if(acertou(palavrasecreta, chutesdados, chutes)){
+        if(jogo.dif == 1){
+            pontos = pontos*sorre;
+        }else if(jogo.dif == 2){
+            pontos = pontos*sorre*2;
+        }else{
+            pontos = pontos*sorre*5;
+        }
+        jogo_pontuacao.pontos = pontos;
+    }
 }
 
 void criaboneco(partida* jogo){
