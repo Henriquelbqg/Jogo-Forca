@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include "forca.c"
-#include "termforca.h"
+#include "main.h"
 
 char palavrasecreta[TAMANHO_PALAVRA];
 char chutes[26];
@@ -16,7 +18,8 @@ int main(void){
 
     abertura();
     inserenome();
-
+    atualizaData(&jogo_pontuacao);
+    
     inseredif();
 
     escolhepalavra(palavrasecreta, &jogo);
@@ -33,18 +36,23 @@ int main(void){
 
     }while(!acertou(palavrasecreta, chutesdados, chutes) && !enforcou());
 
-    desenhaforca();
-
     pontostotais();
 
     if(acertou(palavrasecreta, chutesdados, chutes)){
+        bonecoVivo();
         imprimepalavra(palavrasecreta, chutesdados, chutes);
         printf("\n\nPARABENS!!! VOCE GANHOU!\n\n\n");
         printf("Seus pontos: %d\n\n", jogo_pontuacao.pontos);
+        if(recorde()){
+            atualizaRecorde(&jogo_pontuacao);
+        }
     }else{
+        bonecoEnforcado();
         printf("\nVoce perdeu, boa sorte na proxima vez!\n");
         printf("A palavra era **%s**\n\n",palavrasecreta);
     }
+    imprimeRecorde();
+    printf("\n\n");
 }
 
 void abertura(){
@@ -218,4 +226,127 @@ int chuteerrado(int i){
         }
     }
     return 1;
+}
+
+void atualizaData(pontuacao* jogo){
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    sprintf(jogo->data, "%02d/%02d/%04d", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+}
+
+int recorde(){
+    FILE *f;
+    pontuacao temp;
+
+    f = fopen("recorde.dat", "rb");
+    if(f == NULL){
+        pontuacao padrao;
+        padrao.nome = malloc(sizeof(char)*3); 
+        
+        strcpy(padrao.nome, "XX");
+        padrao.pontos = 0;
+        strcpy(padrao.data, "00/00/0000");
+
+        f = fopen("recorde.dat", "wb");
+        if(f == NULL){
+            printf("recorde.dat não disponível\n\n");
+            exit(1);
+        }
+        fwrite(&padrao, sizeof(pontuacao), 1, f);
+        fclose(f);
+
+        f = fopen("recorde.dat", "rb");
+
+        if(f == NULL){
+            printf("recorde.dat não pode ser reaberto\n\n");
+            exit(1);
+        }
+    }
+
+    if(fread(&temp, sizeof(pontuacao), 1, f) != 1){
+        printf("Falha na leitura do arquivo de recordes\n\n");
+        fclose(f);
+        exit(1);
+    }
+
+    fclose(f);
+
+    if(jogo_pontuacao.pontos > temp.pontos){
+        free(temp.nome);
+        return 1;
+    }
+    free(temp.nome);
+    return 0;
+}
+
+void atualizaRecorde(pontuacao* jogo){
+    FILE* f;
+
+    f = fopen("recorde.dat", "wb");
+    if(f == NULL){
+        printf("recorde.dat nao disponivel\n\n");
+        exit(1);
+    }
+
+    fwrite(jogo, sizeof(pontuacao), 1, f);
+
+    fclose(f);
+}
+
+void imprimeRecorde(){
+    FILE* f;
+    pontuacao temp;
+
+    f = fopen("recorde.dat", "rb");
+    if(f == NULL){
+        printf("recorde.dat nao disponivel\n\n");
+        exit(1);
+    }
+    
+    fread(&temp, sizeof(pontuacao), 1, f);
+
+    fclose(f);
+
+    printf("Recorde desse servidor:\n");
+    printf("%s %d pontos (%s)\n\n", temp.nome, temp.pontos, temp.data);
+}
+
+void bonecoEnforcado(){
+    printf("    _____         /        /    \n");
+    usleep(600000);  
+    printf("   | x    |      /        /     \n");
+    usleep(600000);
+    printf("   | x    |---------------      \n");
+    usleep(600000);
+    printf("   |______|      \\        \\   \n");
+    usleep(600000);
+    printf("                  \\        \\  \n");
+    usleep(600000);
+    printf("\n\n\n");
+}
+
+void bonecoVivo(){
+    printf("            _________       \n");
+    printf("           |  O   O  |      \n");
+    usleep(300000);
+    printf("           |    v    |      \n");
+    usleep(300000);
+    printf("           |  \\____/ |     \n");
+    usleep(300000);
+    printf("           |_________|      \n");
+    usleep(300000);
+    printf("                |           \n");
+    usleep(300000);
+    printf("        ________|________   \n");
+    usleep(300000);
+    printf("                |           \n");
+    usleep(300000);
+    printf("                |           \n");
+    usleep(300000);
+    printf("               / \\         \n");
+    usleep(300000);
+    printf("              /   \\        \n");
+    usleep(300000);
+    printf("             /     \\       \n");
+    printf("\n\n\n");
 }

@@ -7,8 +7,8 @@ typedef struct{
 
 typedef struct{
     char* nome;
-    int erros;
     int pontos;
+    char data[11];
 }pontuacao;
 
 void chuta(int* c, char a[26]);
