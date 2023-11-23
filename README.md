@@ -26,16 +26,16 @@ Luiz Felipe -> lfsbs@cesar.school
 
 ## Como Compilar
 
-Abra o terminal e navegue até o diretório do código fonte. Compile o código com o GCC usando o comando:
+### Abra o terminal e navegue até o diretório do código fonte. Compile o código com o GCC usando o comando:
 
     gcc main.c -o forca
 
-Execute o programa com:
+### Execute o programa com:
 
     ./forca
 
 
-## Funções Implementadas
+## Algumas Funções Implementadas
 
     chuteserrados(): Conta quantidade de erros.
     jachutou(): Confere se o chute é correto.
@@ -55,7 +55,7 @@ Execute o programa com:
 
 ## Dificuldades Encontradas
 
-    Tratamento de erros.
-    Manipulação do arquivo .dat.
-    Uso de novas bibliotecas.
-    Criação de uma biblioteca própria.
+1. Tratamento de erros.
+2. Manipulação do arquivo .dat.
+3. Uso de novas bibliotecas.
+4. Criação de uma biblioteca própria.
