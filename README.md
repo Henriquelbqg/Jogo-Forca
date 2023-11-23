@@ -16,6 +16,9 @@ Luiz Felipe -> lfsbs@cesar.school
 
 ### Instruções de compilação: 
 
+Primeiro, você precisa abrir o terminal. Isso pode ser feito procurando por "Terminal" no menu de aplicações ou pressionando Ctrl+Alt+T em muitas distribuições Linux.
+
+Com o terminal aberto, você vai navegar até o diretório que contém o seu código fonte. Você pode fazer isso com o comando cd, seguido do caminho para o diretório onde o arquivo main.c está salvo.
 Uma vez no diretório correto, o próximo passo é compilar o código. Você vai usar o compilador GCC para isso. Digite gcc main.c -o forca e pressione Enter. Isso diz ao compilador para pegar o arquivo main.c, compilar e criar um executável chamado forca.
 
 Se não houver erros no seu código, o comando acima não produzirá nenhuma mensagem e você simplesmente verá uma nova linha no terminal, esperando pelo próximo comando. Isso significa que a compilação foi bem-sucedida e o arquivo executável forca foi criado.
