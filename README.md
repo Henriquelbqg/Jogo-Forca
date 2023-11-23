@@ -28,16 +28,14 @@ Luiz Felipe -> lfsbs@cesar.school
 
 Abra o terminal e navegue até o diretório do código fonte. Compile o código com o GCC usando o comando:
 
-```sh
-gcc main.c -o forca
+    gcc main.c -o forca
 
 Execute o programa com:
 
-sh
+    ./forca
 
-./forca
 
-Funções Implementadas
+## Funções Implementadas
 
     chuteserrados(): Conta quantidade de erros.
     jachutou(): Confere se o chute é correto.
@@ -47,16 +45,15 @@ Funções Implementadas
     enforcou(): Verifica se o jogador esgotou os chutes.
     alocanome(): Aloca dinamicamente o nome do jogador.
     nomevalido(): Verifica se o nome digitado é válido.
-    (Continuar a lista conforme as funções descritas no PDF)...
 
-Funções Principais
+## Funções Principais
 
     escolhepalavra(): Seleciona uma palavra secreta com base na dificuldade.
     imprimepalavra(): Revela letras corretas e substitui as não reveladas por "_".
     chuta(): Permite ao usuário realizar um chute.
     acertou(): Verifica se todas as letras foram acertadas.
 
-Dificuldades Encontradas
+## Dificuldades Encontradas
 
     Tratamento de erros.
     Manipulação do arquivo .dat.
