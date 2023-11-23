@@ -15,44 +15,53 @@ partida jogo;
 pontuacao jogo_pontuacao;
 
 int main(void){
-
-    abertura();
-    inserenome();
-    atualizaData(&jogo_pontuacao);
-    
-    inseredif();
-
-    escolhepalavra(palavrasecreta, &jogo);
-    criaboneco(&jogo);
-
-    do{
-        desenhaforca();
-        imprimechutes();
-        imprimepalavra(palavrasecreta, chutesdados, chutes);
-        chuta(&chutesdados, chutes);
-
+    while(1){
         limpa();
         abertura();
+        inserenome();
+        atualizaData(&jogo_pontuacao);
+        
+        inseredif();
 
-    }while(!acertou(palavrasecreta, chutesdados, chutes) && !enforcou());
+        escolhepalavra(palavrasecreta, &jogo);
+        criaboneco(&jogo);
 
-    pontostotais();
+        do{
+            desenhaforca();
+            imprimechutes();
+            imprimepalavra(palavrasecreta, chutesdados, chutes);
+            chuta(&chutesdados, chutes);
 
-    if(acertou(palavrasecreta, chutesdados, chutes)){
-        bonecoVivo();
-        imprimepalavra(palavrasecreta, chutesdados, chutes);
-        printf("\n\nPARABENS!!! VOCE GANHOU!\n\n\n");
-        printf("Seus pontos: %d\n\n", jogo_pontuacao.pontos);
-        if(recorde()){
-            atualizaRecorde(&jogo_pontuacao);
+            limpa();
+            abertura();
+
+        }while(!acertou(palavrasecreta, chutesdados, chutes) && !enforcou());
+
+        pontostotais();
+
+        if(acertou(palavrasecreta, chutesdados, chutes)){
+            bonecoVivo();
+            imprimepalavra(palavrasecreta, chutesdados, chutes);
+            printf("\n\nPARABENS!!! VOCE GANHOU!\n\n\n");
+            printf("Seus pontos: %d\n\n", jogo_pontuacao.pontos);
+            if(recorde()){
+                atualizaRecorde(&jogo_pontuacao);
+            }
+        }else{
+            bonecoEnforcado();
+            printf("\nVoce perdeu, boa sorte na proxima vez!\n");
+            printf("A palavra era **%s**\n\n",palavrasecreta);
         }
-    }else{
-        bonecoEnforcado();
-        printf("\nVoce perdeu, boa sorte na proxima vez!\n");
-        printf("A palavra era **%s**\n\n",palavrasecreta);
+        imprimeRecorde();
+        printf("\n\n");
+        
+        printf("Insira 1 para reiniciar o jogo: ");
+        int escolha = scanf("%d", &escolha);
+
+        if(escolha != 1){
+            break;
+        }
     }
-    imprimeRecorde();
-    printf("\n\n");
 }
 
 void abertura(){
