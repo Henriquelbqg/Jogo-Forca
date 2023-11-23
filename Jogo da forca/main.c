@@ -337,7 +337,7 @@ void bonecoVivo(){
     usleep(300000);
     printf("                |           \n");
     usleep(300000);
-    printf("        ________|________   \n");
+    printf("         _______|_______    \n");
     usleep(300000);
     printf("                |           \n");
     usleep(300000);
