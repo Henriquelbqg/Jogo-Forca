@@ -1,4 +1,4 @@
-# TrabalhoPIF 🎮
+# Jogo da Forca 🎮
 
 ## Trabalho da matéria de Programação Imperativa e Funcional focado no desenvolvimento de um casual game.
 
